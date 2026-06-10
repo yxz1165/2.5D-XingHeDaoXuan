@@ -126,7 +126,7 @@
           {
             "type": "command",
             "command": "bash .claude/hooks/session-stop.sh",
-            "timeout": 10
+            "timeout": 30
           }
         ]
       }
