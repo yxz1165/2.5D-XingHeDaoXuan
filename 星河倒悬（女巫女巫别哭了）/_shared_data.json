@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "version": "1.0",
+    "updated": "2026-08-08",
+    "description": "星河倒悬项目——全文档共享权威数据。此文件中定义的所有值在项目中具有唯一权威性。任何 .md 文档中出现的同名数据必须与此文件一致。"
+  },
+
+  "enums": {
+    "WuXing": {
+      "values": ["Metal", "Water", "Wood", "Fire", "Earth"],
+      "note": "相生序：金生水→水生木→木生火→火生土→土生金",
+      "authority": "分析决策/共享系统接口定义.md §一"
+    },
+    "CoinQuality": {
+      "values": ["TongQian", "DangShi", "YinQian", "JinQian", "YanShengJinBao"],
+      "authority": "分析决策/共享系统接口定义.md §六"
+    },
+    "CurrencyType": {
+      "values": ["CopperCoin", "StarCrystal"],
+      "authority": "分析决策/经济系统设计.md §8.1"
+    }
+  },
+
+  "palace_price_coefficients": {
+    "星纪": 1.0, "玄枵": 1.1, "娵訾": 1.2, "降娄": 1.3,
+    "大梁": 1.4, "实沉": 1.5, "鹑首": 1.6, "鹑火": 1.7,
+    "鹑尾": 1.8, "大火": 2.0, "析木": 2.2, "寿星": 2.5,
+    "authority": "经济系统分析/16-星河倒悬经济系统-完整设计.md §四"
+  },
+
+  "boss_rewards": {
+    "焦烈":   {"palace":"星纪宫","copper":200,"star_crystal":2,"material":"荧惑火种碎片"},
+    "林青黛": {"palace":"玄枵宫","copper":200,"star_crystal":2,"material":"千年雷击木"},
+    "卫重":   {"palace":"娵訾宫","copper":250,"star_crystal":3,"material":"五色土"},
+    "金无痕": {"palace":"降娄宫","copper":300,"star_crystal":3,"material":"陨铁"},
+    "澹台明": {"palace":"大梁宫","copper":300,"star_crystal":4,"material":"星图碎片"},
+    "尉迟疆": {"palace":"实沉宫","copper":350,"star_crystal":4,"material":"战场遗物"},
+    "影怜":   {"palace":"鹑首宫","copper":350,"star_crystal":4,"material":"暗影精华"},
+    "公输矩": {"palace":"鹑火宫","copper":400,"star_crystal":4,"material":"蒸汽核心"},
+    "朱砂":   {"palace":"鹑尾宫","copper":400,"star_crystal":5,"material":"生死精华"},
+    "师旷":   {"palace":"大火宫","copper":450,"star_crystal":5,"material":"音石"},
+    "商羽":   {"palace":"析木宫","copper":500,"star_crystal":5,"material":"量子碎片"},
+    "商徵":   {"palace":"寿星宫","copper":500,"star_crystal":5,"material":"星辉"},
+    "authority": "经济系统分析/16-星河倒悬经济系统-完整设计.md §二"
+  },
+
+  "palace_companions": {
+    "星纪":"锻锋(荧惑)","玄枵":"苏羽(岁星)","娵訾":"石翁(地隐)",
+    "降娄":"顾锋(太白)","大梁":"星君(辰星)","实沉":"石磐(镇星)",
+    "鹑首":"影怜(计都)","鹑火":"鲁班语(神机)","鹑尾":"冥婆(玄冥)",
+    "大火":"阮心(天音)","析木":"玄微子(析木)","寿星":"全体(12人)"
+  },
+
+  "coin_prices": {
+    "铜钱":1, "当十钱":10, "银钱":100,
+    "金钱":1000, "厌胜金宝":5000,
+    "authority": "分析决策/六爻纳币-钱币消耗进阶系统.md §二"
+  },
+
+  "coin_probability": {
+    "铜钱": 0.500, "当十钱": 0.510, "银钱": 0.515,
+    "金钱": 0.525, "厌胜金宝": 0.540,
+    "note": "单枚钱币掷出正面(阳)的概率"
+  },
+
+  "coin_buff_multipliers": {
+    "铜钱": 1.00, "当十钱": 1.02, "银钱": 1.04,
+    "金钱": 1.06, "厌胜金宝": 1.10
+  },
+
+  "coin_cost_reductions": {
+    "铜钱": 0.00, "当十钱": 0.03, "银钱": 0.05,
+    "金钱": 0.08, "厌胜金宝": 0.12
+  },
+
+  "currency_exchange": {
+    "1两银": 1000, "1两金": 10000, "1贯": 1000,
+    "note": "最小单位=文·所有内部计算以文为单位"
+  },
+
+  "star_crystal_total": 112,
+
+  "forge_cost": {
+    "single_success": {"+1_3":250,"+3_5":550,"+5_7":1300,"+7_9":4000,"total":6100},
+    "expected_with_failures": {"total":10950,"star_crystal":51},
+    "authority": "经济系统分析/16-星河倒悬经济系统-完整设计.md §三"
+  },
+
+  "standard_terms": {
+    "卦气": {
+      "deprecated_variants": ["卦气资源","卦气资源系统"],
+      "allowed_ui_variant": "卦气条",
+      "note": "系统概念用'卦气'·UI元素用'卦气条'"
+    },
+    "三钱摇卦": {
+      "allowed_aliases": ["三钱法"],
+      "code_class": "CoinDivination",
+      "note": "中文文档使用'三钱摇卦'或'三钱法'均可·C#代码保留CoinDivination类名"
+    }
+  },
+
+  "deprecated": {
+    "modules": ["装备道具/锻造与商店系统GDD.md"],
+    "currencies": ["灵砂","金锭","银两"],
+    "note": "废弃模块中的废弃货币引用属于正常·但活跃GDD中不应出现"
+  },
+
+  "shared_interface_doc": "战斗系统/共享系统接口定义.md",
+
+  "gdd_docs_requiring_shared_ref": [
+    "界面视觉/UI与HUD设计GDD.md",
+    "道宫关卡/世界观与大地图GDD.md",
+    "界面视觉/存档与复活系统GDD.md",
+    "道宫关卡/敌人图鉴GDD.md",
+    "装备道具/法器锻造与进阶系统GDD.md",
+    "道宫关卡/泰西遗民与猎巫真相GDD.md",
+    "装备道具/背包与道具系统GDD.md",
+    "装备道具/角色成长系统GDD.md"
+  ]
+}
