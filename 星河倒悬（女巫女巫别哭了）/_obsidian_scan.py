@@ -11,12 +11,26 @@ no_frontmatter = []
 all_links = []
 all_tags = []
 
+# 不应被识别为标签的模式
+INVALID_TAG_PATTERNS = [
+    r'^\d+$',           # 纯数字（如 #1, #64）
+    r'^[0-9A-Fa-f]{6}$', # 十六进制颜色码（如 #C04040）
+    r'^[0-9A-Fa-f]{3}$', # 短十六进制颜色码（如 #FFF）
+]
+
+def is_valid_tag(tag: str) -> bool:
+    """检查标签是否合法（非纯数字、非色值）"""
+    for pattern in INVALID_TAG_PATTERNS:
+        if re.match(pattern, tag):
+            return False
+    return True
+
 for f in ROOT.rglob("*.md"):
     if f.name.startswith("_"):
         continue
     try:
         content = f.read_text(encoding="utf-8")
-    except Exception:
+    except (UnicodeDecodeError, PermissionError, OSError):
         continue
     rel = str(f.relative_to(ROOT)).replace("\\", "/")
     all_files[rel] = content
@@ -26,19 +40,23 @@ for f in ROOT.rglob("*.md"):
     else:
         no_frontmatter.append(rel)
 
-    # Extract wikilinks [[...]]
+    # 提取 wikilink [[...]]
     wls = re.findall(r"\[\[([^\]]+)\]\]", content)
     for wl in wls:
         target = wl.split("|")[0].split("#")[0].strip()
         all_links.append((rel, target))
 
-    # Extract tags #tag (Obsidian-style: must not be inside code blocks)
-    # Remove code blocks first
-    clean = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
-    clean = re.sub(r"`[^`]+`", "", clean)
-    tags = re.findall(r"(?:^|\s)#([\w一-鿿\-/]+)", clean)
-    for t in tags:
-        all_tags.append((rel, t))
+    # 仅从 frontmatter 中提取标签（而非全文扫描）
+    if content.startswith("---"):
+        # 提取 frontmatter 内容（两个 --- 之间的部分）
+        second_dash = content.find("---", 3)
+        if second_dash > 0:
+            fm_content = content[3:second_dash]
+            # 从 frontmatter 的 tags 段提取
+            tags = re.findall(r"(?:^|\s)-\s*(?:#)?([\w一-鿿\-/]+)", fm_content, re.MULTILINE)
+            for t in tags:
+                if is_valid_tag(t):
+                    all_tags.append((rel, t))
 
 # Check broken links
 broken_links = []

@@ -13,6 +13,7 @@
 2. 读取 `Obsidian写作规范-底层逻辑.md`（写作标准）
 3. 检查上次进度，无缝衔接继续工作
 4. 运行 `python _audit.py` 确认零问题再开始修改
+5. 项目级 Obsidian 格式标准见 `../.claude/docs/obsidian-format-standard.md`
 
 ---
 

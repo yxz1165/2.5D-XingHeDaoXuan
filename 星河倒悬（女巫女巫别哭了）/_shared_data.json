@@ -40,7 +40,7 @@
     "朱砂":   {"palace":"鹑尾宫","copper":400,"star_crystal":5,"material":"生死精华"},
     "师旷":   {"palace":"大火宫","copper":450,"star_crystal":5,"material":"音石"},
     "商羽":   {"palace":"析木宫","copper":500,"star_crystal":5,"material":"量子碎片"},
-    "商徵":   {"palace":"寿星宫","copper":500,"star_crystal":5,"material":"星辉"},
+    "商徵":   {"palace":"寿星宫","copper":500,"star_crystal":5,"hidden_bonus":2,"material":"星辉","note":"双BOSS战(商徵+国师)·隐藏+2星晶为专属互动卦替代奖励"},
     "authority": "经济系统分析/16-星河倒悬经济系统-完整设计.md §二"
   },
 
@@ -81,8 +81,9 @@
   "star_crystal_total": 112,
 
   "forge_cost": {
-    "single_success": {"+1_3":250,"+3_5":550,"+5_7":1300,"+7_9":4000,"total":6100},
+    "single_success": {"+1_3":250,"+3_5":550,"+5_7":1300,"+7_9":3200,"total":5300},
     "expected_with_failures": {"total":10950,"star_crystal":51},
+    "note": "单次成功成本总计5300铜钱·29星晶。期望成本(含失败)10950铜钱·51星晶。详细分级见经济系统设计.md",
     "authority": "经济系统分析/16-星河倒悬经济系统-完整设计.md §三"
   },
 

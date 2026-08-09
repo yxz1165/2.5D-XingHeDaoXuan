@@ -24,6 +24,52 @@
 
 # Design Document Standards
 
+## Obsidian 格式强制规则（所有 .md 设计文档）
+
+**所有游戏设计文档必须使用 Obsidian 格式。** 此规则优先级等同于代码注释规则，违反即为不合格。
+
+### Frontmatter（YAML 头·必填）
+
+每个 .md 文件必须以 `---` 包裹的 YAML frontmatter 开头：
+
+```yaml
+---
+category: <分类>        # 必填·从标签库选取
+status: <状态>          # 必填·🟢已完成/📝编写中/📝待补充/📋参考/📦归档/📦废弃
+phase: <阶段>           # 必填·Phase1/Phase2/Phase3/Phase4/全阶段
+tags:                   # 必填·从标签库选取·至少2个
+  - <标签1>
+  - <标签2>
+updated: YYYY-MM-DD     # 必填·最后修改日期
+---
+```
+
+### Wikilink 互联（必填）
+
+- 跨文档引用**必须**用 `[[文档名]]` 格式，禁止裸路径
+- 同文件夹用短名 `[[战斗系统GDD]]`
+- 跨文件夹用相对路径 `[[卦码系统/03-卦码实现规格书]]`
+- 每个 GDD 底部必须有 `> **关联文档：**` 段落列出所有引用
+
+### 标签规范（必填）
+
+- 只使用标签库中已定义的标签
+- **禁止**：纯数字（`#1`）、色值（`#C04040`）、未定义的自创标签
+- 格式：`分类/子类`（如 `系统/战斗`、`GDD/关卡`）
+
+### 数据权威（强制）
+
+- 任何跨文档共享的数值**必须**在 `_shared_data.json` 中有唯一定义
+- 修改数值→先改 `_shared_data.json`→再同步 .md 文档
+- 修改后运行 `python _audit.py`，必须零问题
+
+### 命名规范（必填）
+
+- 文件名：中文 + 连字符（`-`），不用空格/下划线/特殊符号
+- 例：`战斗系统GDD.md` ✅ / `战斗系统_GDD.md` ❌ / `Combat GDD.md` ❌
+
+## GDD 内容标准
+
 - All design docs use Markdown
 - Each mechanic has a dedicated document in `design/gdd/`
 - Documents must include these 8 required sections:

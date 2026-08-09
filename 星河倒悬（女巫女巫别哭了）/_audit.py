@@ -31,7 +31,8 @@ def load_docs():
         if f.name.startswith('_'): continue  # 跳过系统文件
         try:
             docs[str(f.relative_to(ROOT))] = f.read_text(encoding='utf-8')
-        except: pass
+        except (UnicodeDecodeError, PermissionError, OSError):
+            pass  # 跳过无法读取的文件（编码/权限/系统错误）
     return docs
 
 # ─── 颜色输出 ──────────────────────────────────────────────

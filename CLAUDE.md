@@ -68,6 +68,20 @@ See `docs/COLLABORATIVE-DESIGN-PRINCIPLE.md` for full protocol and examples.
 
 @.claude/docs/coding-standards.md
 
+## 设计文档标准（强制·Obsidian 格式）
+
+**所有设计文档（.md）必须遵循 Obsidian 格式标准。** 详见 `.claude/docs/obsidian-format-standard.md`。
+
+核心要求：
+- **Frontmatter 必填：** `category` / `status` / `phase` / `tags` / `updated`
+- **Wikilink 互联：** 跨文档引用用 `[[文档名]]`，禁止裸文件路径
+- **标签体系：** 从标签库选取，禁止纯数字、色值、自创标签
+- **命名规范：** 中文 + 连字符，不用空格/下划线
+- **审计门禁：** 修改任何设计文档后运行 `python _audit.py`，必须零问题
+
+设计文档权威源：`星河倒悬（女巫女巫别哭了）/`
+写作规范全文：`星河倒悬（女巫女巫别哭了）/Obsidian写作规范-底层逻辑.md`
+
 ### 中文注释强制规则
 
 **所有代码文件（.cs / .gd / .cpp / .py 等）必须使用中文注释。**
